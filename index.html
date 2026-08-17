@@ -155,7 +155,7 @@
   .lock-ico{font-size:34px;margin-bottom:8px}
   .lock-title{font-size:18px;font-weight:800;color:var(--deep)}
   .lock-sub{font-size:12.5px;color:var(--muted);margin:6px 0 18px}
-  .pin{text-align:center;font-size:26px;letter-spacing:14px;padding:12px;font-weight:700}
+  .pin{text-align:center;font-size:24px;letter-spacing:8px;padding:12px;font-weight:700}
   .lock-msg{font-size:12px;color:var(--danger);height:16px;margin-top:10px}
   /* 휴지통 */
   .trash-note{background:#fff7ed;border:1px solid #fed7aa;color:#c2410c;border-radius:10px;padding:11px 13px;font-size:12.5px;margin-bottom:14px}
@@ -183,8 +183,8 @@
   <div class="lock-box">
     <div class="lock-ico">🔒</div>
     <div class="lock-title">회의록 비서</div>
-    <div class="lock-sub">비밀번호 4자리를 입력하세요</div>
-    <input id="pinInput" class="pin" type="password" inputmode="numeric" maxlength="4" autofocus />
+    <div class="lock-sub">비밀번호를 입력하세요</div>
+    <input id="pinInput" class="pin" type="password" maxlength="6" autofocus />
     <div id="pinMsg" class="lock-msg"></div>
   </div>
 </div>
@@ -360,7 +360,7 @@ const LS={settings:'mm_settings',archive:'mm_archive',folders:'mm_folders'};
 const DEFAULT_TOPIC='2026 하반기 신입 공채 계획 회의';
 const DEFAULT_NOTION='https://app.notion.com/p/Team-Meeting-f3c3a105bd5d45a084c79c2b16b6febe';
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-const PIN='0105';
+const PIN='sm2026';
 const FOLDER_COLORS=['#cf8496','#b76e86','#9a7fa6','#8a8a93','#5b5b63','#a98b8b','#c9a15a','#7d9b86'];
 const FOLDER_ICONS=['📁','⭐','📌','🎯','💼','📊','🧩','🔖'];
 let S={mode:'offline',recog:null,recognizing:false,paused:false,transcript:'',plain:'',segments:[],
@@ -390,7 +390,7 @@ function bindLock(){
   const inp=$('pinInput');
   const check=()=>{
     if(inp.value===PIN){$('lockScreen').classList.add('hidden');}
-    else if(inp.value.length>=4){$('pinMsg').textContent='비밀번호가 틀렸어요';inp.value='';}
+    else if(inp.value.length>=6){$('pinMsg').textContent='비밀번호가 틀렸어요';inp.value='';}
     else $('pinMsg').textContent='';
   };
   inp.addEventListener('input',check);
